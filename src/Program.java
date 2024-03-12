@@ -1,4 +1,4 @@
-abstract class Animal {
+class Animal {
     public String name;
     public String food;
     public String location;
@@ -9,12 +9,16 @@ abstract class Animal {
         this.location = location;
     }
 
-    public abstract void makeNoise();
+    public void makeNoise(){
+        System.out.printf("%s издаёт какой-то звук\n", name);
+    }
 
-    public abstract void eat();
+    public void eat(){
+        System.out.printf("%s кушает что-то\n", name);
+    }
 
-    public void sleep(Animal animal){
-        System.out.printf("%s спит", animal.name);
+    public void sleep(){
+        System.out.printf("%s спит...\n", name);
     }
 }
 
@@ -33,12 +37,12 @@ class Dog extends Animal {
 
     @Override
     public void makeNoise() {
-        System.out.println("Гав-гав");
+        System.out.printf("%s: \"Гав-гав\"\n", name);
     }
 
     @Override
     public void eat() {
-        System.out.printf("Кушаю %s", food);
+        System.out.printf("%s кушает %s\n", name, food);
     }
 }
 
@@ -57,12 +61,12 @@ class Cat extends Animal {
 
     @Override
     public void makeNoise() {
-        System.out.println("Мяу-мяу");
+        System.out.printf("%s: \"Мяу-мяу\"\n", name);
     }
 
     @Override
     public void eat() {
-        System.out.printf("Кушаю: %s\n", food);
+        System.out.printf("%s кушает %s\n", name, food);
     }
 }
 
@@ -86,12 +90,12 @@ class Horse extends Animal {
 
     @Override
     public void makeNoise() {
-        System.out.println("Фрр-р");
+        System.out.printf("%s: \"Фрр-р\"\n", name);
     }
 
     @Override
     public void eat() {
-        System.out.printf("Кушаю: %s\n", food);
+        System.out.printf("%s кушает %s\n", name, food);
     }
 }
 
@@ -103,6 +107,7 @@ class Veterinarian {
     }
 
     public void treatAnimal(Animal animal) {
+        System.out.println("Кличка: " + animal.name);
         System.out.println("Еда: " + animal.food);
         System.out.println("Ориал обитания: " + animal.location);
     }
@@ -124,6 +129,7 @@ class Program{
 
         Murka.eat();
         Tenegriv.makeNoise();
+        Tenegriv.sleep();
         Aibolit.treatAnimal(Nikita);
     }
 }
